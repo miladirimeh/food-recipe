@@ -70,7 +70,7 @@ console.log("Mon token envoyé est :", token); // Vérifie dans la console s'il 
         <textarea  className='input-textarea' name='instructions' rows="5" onChange={onHandleChange} value={recipeData.instructions}></textarea>
     </div>
     <div className='form-control'>
-        <label> Recipe Image </label>
+        <label> Recipe image </label>
         <input type='file' className='input' name='file' onChange={onHandleChange}></input>
     </div>
     <button type='submit'> Edit Recipe </button>
