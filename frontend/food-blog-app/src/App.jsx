@@ -8,7 +8,7 @@ import AddFoodRecipe from './pages/AddFoodRecipe'
 import EditRecipe from './pages/EditRecipe'
 const getAllRecipes=async ()=>{
   let allRecipes =[]
-  await axios.get('http://localhost:5000/recipe').then(res=>{
+  await axios.get('https://food-recipe-4-qk7s.onrender.com/recipe').then(res=>{
     allRecipes = res.data
   })
   return allRecipes
