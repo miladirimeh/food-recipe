@@ -12,7 +12,7 @@ const onHandleSubmit = async (e)=>{
   const token = localStorage.getItem("token");
 console.log("Mon token envoyé est :", token); // Vérifie dans la console s'il s'affiche bien
       e.preventDefault()
-      await axios.post("http://localhost:5000/recipe",recipeData,{
+      await axios.post("https://food-recipe-4-qk7s.onrender.com/recipe",recipeData,{
         headers:{
             'Content-Type':'multipart/form-data',
             'authorization': 'Bearer '+localStorage.getItem("token")
