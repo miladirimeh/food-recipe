@@ -10,7 +10,9 @@ app.use(cors())
 app.use(express.static("public"))
 app.use("/", require("./routes/user"))
 app.use("/recipe", require('./routes/recipe'))
-
+app.use(cors({
+  origin: "https://food-recipe-5-ltf8.onrender.com/" // L'URL de ton frontend Render
+}));
 app.listen(PORT,(err)=>{
 if (err) console.log("Erreur au démarrage:", err);
 console.log(`app is listening on PORT ${PORT}`)
