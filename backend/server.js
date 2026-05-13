@@ -1,17 +1,14 @@
 const express = require ('express')
+const cors = require ('cors')
 const app = express()
+app.use(cors())
 const dotenv = require ('dotenv').config()
 const connectDb = require('./config/connectionDb')
-const cors = require ('cors')
+
 const PORT = process.env.PORT || 3000
 connectDb()
-app.use(cors({
-  origin: "https://food-recipe-5-ltf8.onrender.com/", // L'URL de ton frontend Render
-   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
-}));
+
 app.use(express.json())
-app.use(cors())
 app.use(express.static("public"))
 app.use("/", require("./routes/user"))
 app.use("/recipe", require('./routes/recipe'))
