@@ -16,14 +16,25 @@ export default function RecipeItems() {
     useEffect(()=>{
     setAllRecipes(recipes)
     },[recipes])
-  const onDelete=async(id)=>{
-  await axios.delete(`https://food-recipe-4-qk7s.onrender.com/recipe/${id}`)
-    .then ((res)=>console.log(res))
-    setAllRecipes(recipes=>recipes.filter(recipe=>recipe._id !== id))
-        let filterItem = favItems.filter(recipe=>recipe._id !== id)
-           localStorage.setItem("fav",JSON.stringify(filterItem))
+  const onDelete = async (id) => {
+  try {
+    // 1. On tente la suppression sur le serveur
+    const res = await axios.delete(`https://food-recipe-4-qk7s.onrender.com/recipe/${id}`);
+    console.log(res);
 
+    // 2. Si et seulement si le serveur a réussi, on met à jour l'interface React
+    setAllRecipes(recipes => recipes.filter(recipe => recipe._id !== id));
+    
+    // 3. On met à jour les favoris dans le localStorage
+    let filterItem = favItems.filter(recipe => recipe._id !== id);
+    localStorage.setItem("fav", JSON.stringify(filterItem));
+
+  } catch (error) {
+    // Si le serveur renvoie une erreur (ex: problème de connexion ou de droits)
+    console.error("Erreur lors de la suppression :", error);
+    alert("Impossible de supprimer la recette pour le moment.");
   }
+};
   const favRecipe =(item)=>{
     let filterItem = favItems.filter(recipe=>recipe._id !== item._id)
    favItems=favItems.filter(recipe=>recipe._id===item._id).length===0 ?[...favItems,item]: filterItem
