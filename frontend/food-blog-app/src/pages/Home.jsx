@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import foodRecipe from '../assets/foodRecipe.jpg'
 import Navbar  from '../components/Navbar'
 import Footer from '../components/Footer'
+import Modal from '../components/Modal'
+import InputForm from '../components/InputForm'
 import RecipeItems from '../components/RecipeItems'
 import { useNavigate } from 'react-router-dom'
 export default function Home() {
