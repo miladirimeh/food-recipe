@@ -10,7 +10,7 @@ const userSignUp=async (req,res) => {
     if (user) {
         return res.status(400).json({error:"email already exist"})
     }
-    const hashPwd = await bcrypt.hash(password,10)
+    const hashPwd = awaièt bcrypt.hash(password,10)
     const newUser= await User.create({
        email,password:hashPwd
     })
